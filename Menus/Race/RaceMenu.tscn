@@ -77,7 +77,6 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="BaseDescription" type="VBoxContainer" parent="MarginRightContainer"]
-visible = false
 layout_mode = 2
 alignment = 1
 
@@ -95,6 +94,7 @@ text = "Available Series based on owned
 vehicles and driver skills"
 
 [node name="StockFWDDescription" type="VBoxContainer" parent="MarginRightContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Title" type="Label" parent="MarginRightContainer/StockFWDDescription"]

@@ -12,20 +12,22 @@ func _process(delta: float) -> void:
 
 
 func _on_btn_return_pressed() -> void:
+	_clear_containers()
+	$MarginRightContainer/BaseDescription.visible = true
 	get_tree().change_scene_to_file("res://Menus/Main/MainMenu.tscn")
 
 
 func _on_btn_stock_fwd_pressed() -> void:
-	_clear_containers();
-	$MarginRightContainer/StockFWDDescription.visible = true;
+	_clear_containers()
+	$MarginRightContainer/StockFWDDescription.visible = true
 
 
 func _on_btn_unlimited_fwd_pressed() -> void:
-	_clear_containers();
-	$MarginRightContainer/UnlimitedFWDDescription.visible = true;
+	_clear_containers()
+	$MarginRightContainer/UnlimitedFWDDescription.visible = true
 	
 	
 func _clear_containers() -> void:
-	$MarginRightContainer/BaseDescription.visible = false;
-	$MarginRightContainer/UnlimitedFWDDescription.visible = false;
-	$MarginRightContainer/StockFWDDescription.visible = false;
+	$MarginRightContainer/BaseDescription.visible = false
+	$MarginRightContainer/UnlimitedFWDDescription.visible = false
+	$MarginRightContainer/StockFWDDescription.visible = false
