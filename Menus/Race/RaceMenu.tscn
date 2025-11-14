@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://df7gta57b6xof"]
+[gd_scene load_steps=9 format=3 uid="uid://df7gta57b6xof"]
 
 [ext_resource type="Texture2D" uid="uid://csp7gt8why5wp" path="res://Images/RedCar.png" id="1_gjjjm"]
 [ext_resource type="Script" uid="uid://cnif1whqold5i" path="res://Menus/Race/race_menu.gd" id="1_itrpw"]
 [ext_resource type="Theme" uid="uid://dcmq2268oefkm" path="res://DefaultTheme.tres" id="3_7x8xj"]
 [ext_resource type="Theme" uid="uid://c54im1uvrguq1" path="res://Menus/Race/Bruno.tres" id="3_itrpw"]
+[ext_resource type="PackedScene" uid="uid://bh2cfqy2xr5og" path="res://Menus/Race/MainVehicleButton.tscn" id="5_2oyc5"]
+[ext_resource type="Resource" uid="uid://b0xv4nidk27u4" path="res://Resources/HundaAE86.tres" id="6_77ui0"]
+[ext_resource type="Resource" uid="uid://dx51fr6b6bsun" path="res://Resources/MissanS140.tres" id="7_77ui0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_conpo"]
 
@@ -109,8 +112,13 @@ theme = ExtResource("3_itrpw")
 theme_override_font_sizes/font_size = 16
 text = "Select a vehicle from your fleet to continue"
 
-[node name="AvailableVehicles" type="VBoxContainer" parent="MarginRightContainer/StockFWDDescription"]
+[node name="HundaAE86Button" parent="MarginRightContainer/StockFWDDescription" instance=ExtResource("5_2oyc5")]
 layout_mode = 2
+vehicle = ExtResource("6_77ui0")
+
+[node name="MissanS140Button2" parent="MarginRightContainer/StockFWDDescription" instance=ExtResource("5_2oyc5")]
+layout_mode = 2
+vehicle = ExtResource("7_77ui0")
 
 [node name="UnlimitedFWDDescription" type="VBoxContainer" parent="MarginRightContainer"]
 visible = false
