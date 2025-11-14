@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c54im1uvrguq1"]
+
+[ext_resource type="FontFile" uid="uid://d3p5da4oiuv4c" path="res://Fonts/BrunoAce-Regular.ttf" id="1_4yop2"]
+
+[resource]
+default_font = ExtResource("1_4yop2")

@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqlx241wvoyuc"]
+
+[ext_resource type="Script" uid="uid://bos4uewma73hf" path="res://Menus/Main/main_menu.gd" id="1_r8dbq"]
+[ext_resource type="Texture2D" uid="uid://csp7gt8why5wp" path="res://Images/RedCar.png" id="2_7ihqj"]
+[ext_resource type="FontFile" uid="uid://d3p5da4oiuv4c" path="res://Fonts/BrunoAce-Regular.ttf" id="3_lnnhc"]
+[ext_resource type="Theme" uid="uid://dcmq2268oefkm" path="res://DefaultTheme.tres" id="4_ivry2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6o36"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r8dbq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_n6o36")
+
+[node name="RedCar" type="Sprite2D" parent="Panel"]
+position = Vector2(573.00006, 684)
+scale = Vector2(1.296875, 1.2233073)
+texture = ExtResource("2_7ihqj")
+
+[node name="MarginMainMenuButtons" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -106.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxManMenuButtons" type="HBoxContainer" parent="MarginMainMenuButtons"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="btnRace" type="Button" parent="MarginMainMenuButtons/HBoxManMenuButtons"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_lnnhc")
+text = "RACE
+"
+
+[node name="btnVehicles" type="Button" parent="MarginMainMenuButtons/HBoxManMenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_lnnhc")
+text = "Vehicles
+"
+
+[node name="btnDrivers" type="Button" parent="MarginMainMenuButtons/HBoxManMenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_lnnhc")
+text = "Drivers
+"
+
+[node name="btnMechanics" type="Button" parent="MarginMainMenuButtons/HBoxManMenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_lnnhc")
+text = "Mechanics"
+
+[node name="btnStore" type="Button" parent="MarginMainMenuButtons/HBoxManMenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_lnnhc")
+text = "Store
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -11.5
+offset_right = 94.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_lnnhc")
+theme_override_font_sizes/font_size = 37
+text = "Quarter Mile Showdown"
+
+[node name="MarginExitButton" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -84.0
+offset_bottom = 46.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+
+[node name="btnExit" type="Button" parent="MarginExitButton"]
+layout_mode = 2
+theme = ExtResource("4_ivry2")
+theme_override_font_sizes/font_size = 31
+text = "Exit"
+
+[connection signal="pressed" from="MarginMainMenuButtons/HBoxManMenuButtons/btnRace" to="." method="_on_btn_race_pressed"]
+[connection signal="pressed" from="MarginMainMenuButtons/HBoxManMenuButtons/btnVehicles" to="." method="_on_btn_vehicles_pressed"]
+[connection signal="pressed" from="MarginMainMenuButtons/HBoxManMenuButtons/btnDrivers" to="." method="_on_btn_drivers_pressed"]
+[connection signal="pressed" from="MarginMainMenuButtons/HBoxManMenuButtons/btnMechanics" to="." method="_on_btn_mechanics_pressed"]
+[connection signal="pressed" from="MarginExitButton/btnExit" to="." method="_on_btn_exit_pressed"]

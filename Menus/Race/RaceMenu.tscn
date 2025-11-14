@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=3 uid="uid://df7gta57b6xof"]
+
+[ext_resource type="Texture2D" uid="uid://csp7gt8why5wp" path="res://Images/RedCar.png" id="1_gjjjm"]
+[ext_resource type="Script" uid="uid://cnif1whqold5i" path="res://Menus/Race/race_menu.gd" id="1_itrpw"]
+[ext_resource type="Theme" uid="uid://dcmq2268oefkm" path="res://DefaultTheme.tres" id="3_7x8xj"]
+[ext_resource type="Theme" uid="uid://c54im1uvrguq1" path="res://Menus/Race/Bruno.tres" id="3_itrpw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_conpo"]
+
+[node name="RaceMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_itrpw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_conpo")
+
+[node name="RedCar" type="Sprite2D" parent="Panel"]
+position = Vector2(573.00006, 684)
+scale = Vector2(1.296875, 1.2233073)
+texture = ExtResource("1_gjjjm")
+
+[node name="MarginLeftContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 281.0
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxSeriesOptions" type="VBoxContainer" parent="MarginLeftContainer"]
+layout_mode = 2
+theme = ExtResource("3_7x8xj")
+
+[node name="Label" type="Label" parent="MarginLeftContainer/VBoxSeriesOptions"]
+layout_mode = 2
+text = "Classes"
+
+[node name="btnStockFWD" type="Button" parent="MarginLeftContainer/VBoxSeriesOptions"]
+layout_mode = 2
+text = "Stock Front Wheel Drive"
+
+[node name="btnUnlimitedFWD" type="Button" parent="MarginLeftContainer/VBoxSeriesOptions"]
+layout_mode = 2
+text = "Unlimited Front Wheel Drive"
+
+[node name="btnReturn" type="Button" parent="MarginLeftContainer/VBoxSeriesOptions"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Back"
+
+[node name="MarginRightContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -507.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BaseDescription" type="VBoxContainer" parent="MarginRightContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginRightContainer/BaseDescription"]
+layout_mode = 2
+theme = ExtResource("3_itrpw")
+theme_override_font_sizes/font_size = 28
+text = "Choose your Series"
+
+[node name="Subtitle" type="Label" parent="MarginRightContainer/BaseDescription"]
+layout_mode = 2
+theme = ExtResource("3_itrpw")
+theme_override_font_sizes/font_size = 16
+text = "Available Series based on owned 
+vehicles and driver skills"
+
+[node name="StockFWDDescription" type="VBoxContainer" parent="MarginRightContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginRightContainer/StockFWDDescription"]
+layout_mode = 2
+theme = ExtResource("3_itrpw")
+theme_override_font_sizes/font_size = 28
+text = "Stock Front Wheel Drive"
+
+[node name="Subtitle" type="Label" parent="MarginRightContainer/StockFWDDescription"]
+layout_mode = 2
+theme = ExtResource("3_itrpw")
+theme_override_font_sizes/font_size = 16
+text = "Select a vehicle from your fleet to continue"
+
+[node name="UnlimitedFWDDescription" type="VBoxContainer" parent="MarginRightContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginRightContainer/UnlimitedFWDDescription"]
+layout_mode = 2
+theme = ExtResource("3_itrpw")
+theme_override_font_sizes/font_size = 28
+text = "Unlimited Front Wheel Drive"
+
+[node name="Subtitle" type="Label" parent="MarginRightContainer/UnlimitedFWDDescription"]
+layout_mode = 2
+theme = ExtResource("3_itrpw")
+theme_override_font_sizes/font_size = 16
+text = "Select a vehicle from your fleet to continue"
+
+[connection signal="pressed" from="MarginLeftContainer/VBoxSeriesOptions/btnStockFWD" to="." method="_on_btn_stock_fwd_pressed"]
+[connection signal="pressed" from="MarginLeftContainer/VBoxSeriesOptions/btnUnlimitedFWD" to="." method="_on_btn_unlimited_fwd_pressed"]
+[connection signal="pressed" from="MarginLeftContainer/VBoxSeriesOptions/btnReturn" to="." method="_on_btn_return_pressed"]
