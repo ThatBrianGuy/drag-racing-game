@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BaseVehicle" load_steps=3 format=3 uid="uid://b0xv4nidk27u4"]
+
+[ext_resource type="Script" uid="uid://d0t3m7u8gm756" path="res://Scripts/base_vehicle.gd" id="1_bvqfy"]
+[ext_resource type="Texture2D" uid="uid://c8h8feyn2hqyp" path="res://Images/HundaAE86.png" id="2_jet37"]
+
+[resource]
+script = ExtResource("1_bvqfy")
+vehicle_name = "Hunda AE86"
+cost = 2000
+vehicle_image = ExtResource("2_jet37")
+available = true
+metadata/_custom_type_script = "uid://d0t3m7u8gm756"

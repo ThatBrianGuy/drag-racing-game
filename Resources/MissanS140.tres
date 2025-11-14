@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseVehicle" load_steps=3 format=3 uid="uid://dx51fr6b6bsun"]
+
+[ext_resource type="Script" uid="uid://d0t3m7u8gm756" path="res://Scripts/base_vehicle.gd" id="1_job0q"]
+[ext_resource type="Texture2D" uid="uid://b4ln0lf5sgoxy" path="res://Images/MissanS140.png" id="2_jafxp"]
+
+[resource]
+script = ExtResource("1_job0q")
+vehicle_name = "Missan S140"
+engine_type = 1
+power_adder = 1
+cost = 5000
+vehicle_image = ExtResource("2_jafxp")
+metadata/_custom_type_script = "uid://d0t3m7u8gm756"

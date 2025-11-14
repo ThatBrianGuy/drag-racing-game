@@ -109,6 +109,9 @@ theme = ExtResource("3_itrpw")
 theme_override_font_sizes/font_size = 16
 text = "Select a vehicle from your fleet to continue"
 
+[node name="AvailableVehicles" type="VBoxContainer" parent="MarginRightContainer/StockFWDDescription"]
+layout_mode = 2
+
 [node name="UnlimitedFWDDescription" type="VBoxContainer" parent="MarginRightContainer"]
 visible = false
 layout_mode = 2
