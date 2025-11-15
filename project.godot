@@ -15,6 +15,10 @@ run/main_scene="uid://dqlx241wvoyuc"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+VehicleManager="*res://Scripts/vehicle_manager.gd"
+
 [dotnet]
 
 project/assembly_name="Drag Racing Game"

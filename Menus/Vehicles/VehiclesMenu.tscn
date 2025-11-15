@@ -1,0 +1,163 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcf5nfrktjtg6"]
+
+[ext_resource type="Texture2D" uid="uid://csp7gt8why5wp" path="res://Images/RedCar.png" id="1_d5vnc"]
+[ext_resource type="Theme" uid="uid://dcmq2268oefkm" path="res://DefaultTheme.tres" id="2_7whgt"]
+[ext_resource type="Theme" uid="uid://c54im1uvrguq1" path="res://Menus/Race/Bruno.tres" id="3_kanqv"]
+
+[sub_resource type="GDScript" id="GDScript_xp0j6"]
+script/source = "extends Control
+
+const main_menu_vehicle_button = preload(\"res://Resources/MainMenuVehicleButton.tscn\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	_clear_containers()
+	for vehicle in VehicleManager.dealership_vehicles:
+		var menuButton = main_menu_vehicle_button.instantiate()
+		menuButton.text = VehicleManager.dealership_vehicles[vehicle].name
+		menuButton.icon = VehicleManager.dealership_vehicles[vehicle].image
+		$MarginRightContainer/DealershipScrollContainer/DealershipContainer.add_child(menuButton)
+	for vehicle in VehicleManager.owned_vehicles:
+		var menuButton = main_menu_vehicle_button.instantiate()
+		menuButton.text = VehicleManager.dealership_vehicles[vehicle].name
+		menuButton.icon = VehicleManager.dealership_vehicles[vehicle].image
+		$MarginRightContainer/GarageScrollContainer/GarageContainer.add_child(menuButton)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_btn_dealership_pressed() -> void:
+	_clear_containers()
+	$MarginRightContainer/DealershipScrollContainer.visible = true
+
+
+func _on_btn_garage_pressed() -> void:
+	_clear_containers()
+	$MarginRightContainer/GarageScrollContainer.visible = true
+
+
+func _clear_containers() -> void:
+	$MarginRightContainer/DealershipScrollContainer.visible = false
+	$MarginRightContainer/GarageScrollContainer.visible = false
+
+
+func _on_btn_return_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Menus/Main/MainMenu.tscn\")
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_73gi4"]
+
+[node name="VehiclesMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_xp0j6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_73gi4")
+
+[node name="RedCar" type="Sprite2D" parent="Panel"]
+position = Vector2(573.00006, 684)
+scale = Vector2(1.296875, 1.2233073)
+texture = ExtResource("1_d5vnc")
+
+[node name="MarginLeftContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 281.0
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxSeriesOptions" type="VBoxContainer" parent="MarginLeftContainer"]
+layout_mode = 2
+theme = ExtResource("2_7whgt")
+
+[node name="Label" type="Label" parent="MarginLeftContainer/VBoxSeriesOptions"]
+layout_mode = 2
+text = "Choose Location
+"
+
+[node name="btnDealership" type="Button" parent="MarginLeftContainer/VBoxSeriesOptions"]
+layout_mode = 2
+text = "Dealership"
+
+[node name="btnGarage" type="Button" parent="MarginLeftContainer/VBoxSeriesOptions"]
+layout_mode = 2
+text = "Garage
+"
+
+[node name="btnReturn" type="Button" parent="MarginLeftContainer/VBoxSeriesOptions"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Back"
+
+[node name="MarginRightContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -834.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DealershipScrollContainer" type="ScrollContainer" parent="MarginRightContainer"]
+layout_mode = 2
+
+[node name="DealershipContainer" type="VBoxContainer" parent="MarginRightContainer/DealershipScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="MarginRightContainer/DealershipScrollContainer/DealershipContainer"]
+layout_mode = 2
+theme = ExtResource("3_kanqv")
+theme_override_font_sizes/font_size = 28
+text = "Dealership Vehicles"
+
+[node name="Subtitle" type="Label" parent="MarginRightContainer/DealershipScrollContainer/DealershipContainer"]
+layout_mode = 2
+theme = ExtResource("3_kanqv")
+theme_override_font_sizes/font_size = 16
+text = "Stock vehicles available for purchase"
+
+[node name="GarageScrollContainer" type="ScrollContainer" parent="MarginRightContainer"]
+layout_mode = 2
+
+[node name="GarageContainer" type="VBoxContainer" parent="MarginRightContainer/GarageScrollContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginRightContainer/GarageScrollContainer/GarageContainer"]
+layout_mode = 2
+theme = ExtResource("3_kanqv")
+theme_override_font_sizes/font_size = 28
+text = "Garage"
+
+[node name="Subtitle" type="Label" parent="MarginRightContainer/GarageScrollContainer/GarageContainer"]
+layout_mode = 2
+theme = ExtResource("3_kanqv")
+theme_override_font_sizes/font_size = 16
+text = "Purchased vehicles ready to race"
+
+[connection signal="pressed" from="MarginLeftContainer/VBoxSeriesOptions/btnDealership" to="." method="_on_btn_dealership_pressed"]
+[connection signal="pressed" from="MarginLeftContainer/VBoxSeriesOptions/btnGarage" to="." method="_on_btn_garage_pressed"]
+[connection signal="pressed" from="MarginLeftContainer/VBoxSeriesOptions/btnReturn" to="." method="_on_btn_return_pressed"]

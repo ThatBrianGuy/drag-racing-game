@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh2cfqy2xr5og"]
+[gd_scene load_steps=3 format=3 uid="uid://78i557qqmqdu"]
 
-[ext_resource type="Theme" uid="uid://dcmq2268oefkm" path="res://DefaultTheme.tres" id="1_4ft0a"]
+[ext_resource type="Theme" uid="uid://dcmq2268oefkm" path="res://DefaultTheme.tres" id="1_3dit7"]
 
-[sub_resource type="GDScript" id="GDScript_luhwn"]
+[sub_resource type="GDScript" id="GDScript_3dit7"]
 script/source = "extends Control
 
-@export var vehicle: BaseVehicle
+var text: String
+var icon: CompressedTexture2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$MarginContainer/Button.icon = vehicle.vehicle_image
-	$MarginContainer/Button.text = vehicle.vehicle_name
-	$MarginContainer/Button.disabled = !vehicle.available
+	$MarginContainer/Button.text = text
+	$MarginContainer/Button.icon = icon
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,12 +19,16 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[node name="MainVehicleButton" type="Control"]
+[node name="MainMenuVehicleButton" type="Control"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-script = SubResource("GDScript_luhwn")
+theme = ExtResource("1_3dit7")
+script = SubResource("GDScript_3dit7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -37,5 +41,5 @@ theme_override_constants/margin_bottom = 8
 
 [node name="Button" type="Button" parent="MarginContainer"]
 layout_mode = 2
-theme = ExtResource("1_4ft0a")
-theme_override_constants/icon_max_width = 200
+theme = ExtResource("1_3dit7")
+theme_override_constants/icon_max_width = 250
